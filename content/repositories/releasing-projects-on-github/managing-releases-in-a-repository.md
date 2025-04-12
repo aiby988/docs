@@ -1,4 +1,47 @@
----
+---# action.yml
+name: 'Hello World'
+description: 'Greet someone and record the time'
+inputs:
+  who-to-greet:  # id of input
+    description: 'Who to greet'
+    required: true
+    default: 'World'
+outputs:
+  time: # id of output
+    description: 'The time we greeted you'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.who-to-greet }}
+    action.yml#!/bin/sh -l
+
+echo "Hello $1"
+time=$(date)
+echo "time=$time" >> $GITHUB_OUTPUT
+git add entrypoint.sh
+git update-index --chmod=+x entrypoint.shentrypoint.sh# Hello world docker action
+
+This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+
+## Inputs
+
+## `who-to-greet`
+
+**Required** The name of the person to greet. Default `"World"`.
+
+## Outputs
+
+## `time`
+
+The time we greeted you.
+
+## Example usage
+
+uses: actions/hello-world-docker-action@v2
+with:
+  who-to-greet: 'Mona the Octocat'
+  git ls-files --stage entrypoint.shgit ls-files --stage entrypoint.shgit ls-files --stage entrypoint.shgit ls-files --stage entrypoint.shgit ls-files --stage entrypoint.shgit ls-files --stage entrypoint.shgit ls-files --stage entrypoint.shgit ls-files --stage entrypoint.shgit ls-files --stage entrypoint.shgit ls-files --stage entrypoint.shgit ls-files --stage entrypoint.shgit ls-files --stage entrypoint.shgit ls-files --stage entrypoint.shgit ls-files --stage entrypoint.shgit ls-files --stage entrypoint.shgit ls-files --stage entrypoint.shgit ls-files --stage entrypoint.shgit ls-files --stage entrypoint.shgit ls-files --stage entrypoint.shgit ls-files --stage entrypoint.shgit ls-files --stage entrypoint.shgit ls-files --stage entrypoint.shgit ls-files --stage entrypoint.shgit ls-files --stage entrypoint.shgit ls-files --stage entrypoint.shgit ls-files --stage entrypoint.shgit ls-files --stage entrypoint.sh
 title: Managing releases in a repository
 intro: You can create releases to bundle and deliver iterations of a project to users.
 redirect_from:
